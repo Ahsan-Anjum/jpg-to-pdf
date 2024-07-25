@@ -60,7 +60,7 @@
                 const imgData = event.target.result;
 
                 // Create a new PDF document
-                const { PDFDocument, rgb } = PDFLib;
+                const { PDFDocument } = PDFLib;
                 const pdfDoc = await PDFDocument.create();
                 const page = pdfDoc.addPage();
                 const { width, height } = page.getSize();
@@ -84,7 +84,11 @@
 
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'output.pdf';
+                
+                // Extract the file name without extension
+                const fileName = file.name.replace(/\.[^/.]+$/, "");
+                a.download = `${fileName}.pdf`;
+                
                 a.click();
                 window.URL.revokeObjectURL(url);
             };
