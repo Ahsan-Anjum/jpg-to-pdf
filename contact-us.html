@@ -3,12 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Contact Us / About Us</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
             background-color: #f4f4f4;
+        }
+        .header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .header a:hover {
+            text-decoration: underline;
         }
         .container {
             background: white;
@@ -18,29 +37,36 @@
             width: 80%;
             max-width: 800px;
             margin: auto;
+            margin-top: 60px;
         }
-        .nav-links {
-            margin-bottom: 20px;
+        h2 {
+            margin-top: 0;
         }
-        .nav-links a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #007bff;
+        .contact-info, .about-us {
+            margin-bottom: 30px;
         }
-        .nav-links a:hover {
-            text-decoration: underline;
+        .contact-info p, .about-us p {
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <a href="index.html">Home</a>
+        <a href="how-to-use.html">How to Use</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms and Conditions</a>
+    </div>
     <div class="container">
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="how-to-use.html">How to Use</a>
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or feedback, feel free to reach out to us:</p>
+            <p>Email: <a href="mailto:imagopdf@gmail.com">imagopdf@gmail.com</a></p>
         </div>
-        <h2>Contact Us</h2>
-        <p>If you have any questions, feedback, or need assistance, feel free to reach out to us:</p>
-        <p>Email: imagopdf@gmail.com</p>
+        <div class="about-us">
+            <h2>About Us</h2>
+            <p>Welcome to our JPG to PDF Converter website. Our mission is to provide a simple, fast, and reliable way for users to convert their JPG images into PDF files. We are committed to delivering a user-friendly experience and continuously improving our service.</p>
+        </div>
     </div>
 </body>
 </html>
