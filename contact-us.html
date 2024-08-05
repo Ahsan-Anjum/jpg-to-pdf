@@ -7,21 +7,23 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            padding: 20px;
             background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
         }
         .header {
-            position: absolute;
-            top: 0;
-            width: 100%;
             display: flex;
+            flex-wrap: wrap;
             justify-content: flex-end;
-            padding: 20px;
+            padding: 10px 20px;
             background-color: white;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         .header a {
-            margin-left: 20px;
+            margin: 5px;
             text-decoration: none;
             color: #007bff;
             font-weight: bold;
@@ -42,7 +44,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22);
-            width: 80%;
+            width: 90%;
             max-width: 800px;
             margin: auto;
             margin-top: 60px;
@@ -55,6 +57,33 @@
         }
         .contact-info p, .about-us p {
             margin: 10px 0;
+        }
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header a {
+                margin: 5px 2px;
+                font-size: 14px;
+            }
+            .container {
+                padding: 10px;
+                margin-top: 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header a {
+                display: block;
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+            .container {
+                width: 95%;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
