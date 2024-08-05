@@ -10,6 +10,25 @@
             padding: 20px;
             background-color: #f4f4f4;
         }
+        .header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .header a:hover {
+            text-decoration: underline;
+        }
         .container {
             background: white;
             padding: 20px;
@@ -18,26 +37,19 @@
             width: 80%;
             max-width: 800px;
             margin: auto;
-        }
-        .nav-links {
-            margin-bottom: 20px;
-        }
-        .nav-links a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #007bff;
-        }
-        .nav-links a:hover {
-            text-decoration: underline;
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <a href="index.html">Home</a>
+        <a href="contact-us.html">Contact Us</a>
+        <a href="about-us.html">About Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms and Conditions</a>
+    </div>
     <div class="container">
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="contact-us.html">Contact Us</a>
-        </div>
         <h2>How to Use This Website</h2>
         <p>Follow these simple steps to convert your JPG files to PDF:</p>
         <ol>
