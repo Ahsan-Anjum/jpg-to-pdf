@@ -18,8 +18,9 @@
             background: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22);
             text-align: center;
+            position: relative;
         }
         input[type="file"] {
             margin: 20px 0;
@@ -40,7 +41,7 @@
 <body>
     <div class="container">
         <h1>JPG to PDF Converter</h1>
-        <input type="file" id="jpgInput" accept="image/jpeg">
+        <input type="file" id="jpgInput" accept="image/jpeg" multiple>
         <button onclick="convertToPDF()">Convert to PDF</button>
     </div>
 
@@ -49,51 +50,58 @@
         async function convertToPDF() {
             const fileInput = document.getElementById('jpgInput');
             if (fileInput.files.length === 0) {
-                alert('Please select a JPG file.');
+                alert('Please select one or more JPG files.');
                 return;
             }
 
-            const file = fileInput.files[0];
-            const reader = new FileReader();
+            const { PDFDocument } = PDFLib;
+            const pdfDoc = await PDFDocument.create();
 
-            reader.onload = async function(event) {
-                const imgData = event.target.result;
+            const fileNames = [];
 
-                // Create a new PDF document
-                const { PDFDocument } = PDFLib;
-                const pdfDoc = await PDFDocument.create();
-                const page = pdfDoc.addPage();
-                const { width, height } = page.getSize();
+            for (const file of fileInput.files) {
+                const reader = new FileReader();
 
-                // Load the image
+                const imgData = await new Promise((resolve, reject) => {
+                    reader.onload = (event) => resolve(event.target.result);
+                    reader.onerror = reject;
+                    reader.readAsArrayBuffer(file);
+                });
+
+                fileNames.push(file.name);
+
                 const img = await pdfDoc.embedJpg(imgData);
-                const { width: imgWidth, height: imgHeight } = img;
+                const imgDims = img.scale(1);
 
-                // Draw the image on the page
+                const page = pdfDoc.addPage([imgDims.width, imgDims.height]);
                 page.drawImage(img, {
                     x: 0,
                     y: 0,
-                    width: width,
-                    height: (imgHeight / imgWidth) * width,
+                    width: imgDims.width,
+                    height: imgDims.height,
                 });
+            }
 
-                // Save the PDF and trigger download
-                const pdfBytes = await pdfDoc.save();
-                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-                const url = window.URL.createObjectURL(blob);
+            // Save the PDF and trigger download
+            const pdfBytes = await pdfDoc.save();
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const url = window.URL.createObjectURL(blob);
 
-                const a = document.createElement('a');
-                a.href = url;
-                
-                // Extract the file name without extension
-                const fileName = file.name.replace(/\.[^/.]+$/, "");
-                a.download = `${fileName}.pdf`;
-                
-                a.click();
-                window.URL.revokeObjectURL(url);
-            };
+            const a = document.createElement('a');
+            a.href = url;
 
-            reader.readAsArrayBuffer(file);
+            // Determine the PDF file name
+            let pdfFileName;
+            if (fileNames.length === 1) {
+                pdfFileName = fileNames[0].replace(/\.[^/.]+$/, "") + ".pdf";
+            } else {
+                const shortName = fileNames.map(name => name[0]).join('');
+                pdfFileName = shortName + "_combined.pdf";
+            }
+            a.download = pdfFileName;
+
+            a.click();
+            window.URL.revokeObjectURL(url);
         }
     </script>
 </body>
