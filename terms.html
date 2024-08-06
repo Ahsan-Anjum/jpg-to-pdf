@@ -83,30 +83,87 @@
             }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/page/page.js"></script>
+    <script>
+        function navigate(event, path) {
+            event.preventDefault();
+            page(path);
+        }
+
+        function loadContent(content) {
+            document.getElementById('content').innerHTML = content;
+        }
+
+        // Define routes
+        page('/', () => loadContent(`
+            <h1>JPG to PDF Converter</h1>
+            <input type="file" id="jpgInput" accept="image/jpeg" multiple>
+            <button onclick="convertToPDF()">Convert to PDF</button>
+            <div class="info-box">
+                <h2>How to Use</h2>
+                <p>Select one or more JPG files from your device, and click "Convert to PDF". The converter will generate a PDF containing your images.</p>
+            </div>
+        `));
+
+        page('/how-to-use', () => loadContent(`
+            <h2>How to Use This Website</h2>
+            <p>Follow these simple steps to convert your JPG files to PDF:</p>
+            <ol>
+                <li>Click on the "Choose Files" button to select one or more JPG files from your device.</li>
+                <li>Once your files are selected, click on the "Convert to PDF" button.</li>
+                <li>Wait for the conversion process to complete.</li>
+                <li>Your PDF file(s) will be automatically downloaded to your device.</li>
+            </ol>
+        `));
+
+        page('/contact-us', () => loadContent(`
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p>If you have any questions or feedback, feel free to reach out to us:</p>
+                <p>Email: <a href="mailto:imagopdf@gmail.com">imagopdf@gmail.com</a></p>
+            </div>
+            <div class="about-us">
+                <h2>About Us</h2>
+                <p>Welcome to our JPG to PDF Converter website. Our mission is to provide a simple, fast, and reliable way for users to convert their JPG images into PDF files. We are committed to delivering a user-friendly experience and continuously improving our service.</p>
+            </div>
+        `));
+
+        page('/privacy-policy', () => loadContent(`
+            <h2>Privacy Policy</h2>
+            <p>Your privacy is important to us. We do not collect or store any personal information when you use our website.</p>
+            <h3>How the Converter Works</h3>
+            <p>Our JPG to PDF Converter operates entirely on the client-side. This means that no files are uploaded to our servers. The conversion process occurs locally on your device, ensuring that your files remain private and secure.</p>
+        `));
+
+        page('/terms', () => loadContent(`
+            <h2>Terms and Conditions</h2>
+            <p>Welcome to our website. These terms and conditions outline the rules and regulations for the use of our website.</p>
+            <h3>Acceptance of Terms</h3>
+            <p>By accessing or using our website, you agree to be bound by these terms and conditions. If you do not agree, please do not use our site.</p>
+            <h3>Use of Site</h3>
+            <p>You may use our website only for lawful purposes and in accordance with these terms. You agree not to use the site for any illegal or unauthorized purpose.</p>
+            <h3>Intellectual Property</h3>
+            <p>All content on this website is the property of the site owner and is protected by copyright and other intellectual property laws.</p>
+            <h3>Limitation of Liability</h3>
+            <p>We are not liable for any damages arising from your use of our website or inability to use it. The website is provided on an "as-is" and "as-available" basis.</p>
+            <h3>Client-Side Processing</h3>
+            <p>Our JPG to PDF Converter operates entirely on the client-side. This means that no files are uploaded to our servers. The conversion process occurs locally on your device, ensuring that your files remain private and secure. We do not collect or use any personal information in the process.</p>
+            <h3>Changes to Terms</h3>
+            <p>We may update these terms from time to time. Any changes will be posted on this page with an updated effective date.</p>
+        `));
+
+        // Start Page.js routing
+        page();
+    </script>
 </head>
 <body>
     <div class="header">
-        <a href="index.html">Home</a>
-        <a href="how-to-use.html">How to Use</a>
-        <a href="contact-us.html">Contact Us / About Us</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms.html">Terms and Conditions</a>
+        <a href="/" onclick="navigate(event, '/')">Home</a>
+        <a href="/how-to-use" onclick="navigate(event, '/how-to-use')">How to Use</a>
+        <a href="/contact-us" onclick="navigate(event, '/contact-us')">Contact Us / About Us</a>
+        <a href="/privacy-policy" onclick="navigate(event, '/privacy-policy')">Privacy Policy</a>
+        <a href="/terms" onclick="navigate(event, '/terms')">Terms and Conditions</a>
     </div>
-    <div class="container">
-        <h2>Terms and Conditions</h2>
-        <p>Welcome to our website. These terms and conditions outline the rules and regulations for the use of our website.</p>
-        <h3>Acceptance of Terms</h3>
-        <p>By accessing or using our website, you agree to be bound by these terms and conditions. If you do not agree, please do not use our site.</p>
-        <h3>Use of Site</h3>
-        <p>You may use our website only for lawful purposes and in accordance with these terms. You agree not to use the site for any illegal or unauthorized purpose.</p>
-        <h3>Intellectual Property</h3>
-        <p>All content on this website is the property of the site owner and is protected by copyright and other intellectual property laws.</p>
-        <h3>Limitation of Liability</h3>
-        <p>We are not liable for any damages arising from your use of our website or inability to use it. The website is provided on an "as-is" and "as-available" basis.</p>
-        <h3>Client-Side Processing</h3>
-        <p>Our JPG to PDF Converter operates entirely on the client-side. This means that no files are uploaded to our servers. The conversion process occurs locally on your device, ensuring that your files remain private and secure. We do not collect or use any personal information in the process.</p>
-        <h3>Changes to Terms</h3>
-        <p>We may update these terms from time to time. Any changes will be posted on this page with an updated effective date.</p>
-    </div>
+    <div id="content" class="container"></div>
 </body>
 </html>
