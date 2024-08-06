@@ -86,25 +86,67 @@
             }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/page/page.js"></script>
+    <script>
+        function navigate(event, path) {
+            event.preventDefault();
+            page(path);
+        }
+
+        function loadContent(content) {
+            document.getElementById('content').innerHTML = content;
+        }
+
+        // Define routes
+        page('/', () => loadContent(`
+            <h1>JPG to PDF Converter</h1>
+            <input type="file" id="jpgInput" accept="image/jpeg" multiple>
+            <button onclick="convertToPDF()">Convert to PDF</button>
+            <div class="info-box">
+                <h2>How to Use</h2>
+                <p>Select one or more JPG files from your device, and click "Convert to PDF". The converter will generate a PDF containing your images.</p>
+            </div>
+        `));
+
+        page('/how-to-use', () => loadContent(`
+            <h1>How to Use</h1>
+            <p>Select one or more JPG files from your device, and click "Convert to PDF". The converter will generate a PDF containing your images.</p>
+        `));
+
+        page('/contact-us', () => loadContent(`
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p>If you have any questions or feedback, feel free to reach out to us:</p>
+                <p>Email: <a href="mailto:imagopdf@gmail.com">imagopdf@gmail.com</a></p>
+            </div>
+            <div class="about-us">
+                <h2>About Us</h2>
+                <p>Welcome to our JPG to PDF Converter website. Our mission is to provide a simple, fast, and reliable way for users to convert their JPG images into PDF files. We are committed to delivering a user-friendly experience and continuously improving our service.</p>
+            </div>
+        `));
+
+        page('/privacy-policy', () => loadContent(`
+            <h1>Privacy Policy</h1>
+            <p>This is the Privacy Policy page.</p>
+        `));
+
+        page('/terms', () => loadContent(`
+            <h1>Terms and Conditions</h1>
+            <p>This is the Terms and Conditions page.</p>
+        `));
+
+        // Start Page.js routing
+        page();
+    </script>
 </head>
 <body>
     <div class="header">
-        <a href="index.html">Home</a>
-        <a href="how-to-use.html">How to Use</a>
-        <a href="contact-us.html">Contact Us / About Us</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms.html">Terms and Conditions</a>
+        <a href="/" onclick="navigate(event, '/')">Home</a>
+        <a href="/how-to-use" onclick="navigate(event, '/how-to-use')">How to Use</a>
+        <a href="/contact-us" onclick="navigate(event, '/contact-us')">Contact Us / About Us</a>
+        <a href="/privacy-policy" onclick="navigate(event, '/privacy-policy')">Privacy Policy</a>
+        <a href="/terms" onclick="navigate(event, '/terms')">Terms and Conditions</a>
     </div>
-    <div class="container">
-        <div class="contact-info">
-            <h2>Contact Us</h2>
-            <p>If you have any questions or feedback, feel free to reach out to us:</p>
-            <p>Email: <a href="mailto:imagopdf@gmail.com">imagopdf@gmail.com</a></p>
-        </div>
-        <div class="about-us">
-            <h2>About Us</h2>
-            <p>Welcome to our JPG to PDF Converter website. Our mission is to provide a simple, fast, and reliable way for users to convert their JPG images into PDF files. We are committed to delivering a user-friendly experience and continuously improving our service.</p>
-        </div>
-    </div>
+    <div id="content" class="container"></div>
 </body>
 </html>
