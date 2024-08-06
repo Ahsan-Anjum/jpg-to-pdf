@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4652820964890698"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4652820964890698" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JPG to PDF Converter</title>
@@ -100,27 +99,61 @@
             }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/page/page.js"></script>
 </head>
 <body>
     <div class="header">
-        <a href="index.html">Home</a>
-        <a href="how-to-use.html">How to Use</a>
-        <a href="contact-us.html">Contact Us / About Us</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms.html">Terms and Conditions</a>
+        <a href="/" onclick="navigate(event, '/')">Home</a>
+        <a href="/how-to-use" onclick="navigate(event, '/how-to-use')">How to Use</a>
+        <a href="/contact-us" onclick="navigate(event, '/contact-us')">Contact Us / About Us</a>
+        <a href="/privacy-policy" onclick="navigate(event, '/privacy-policy')">Privacy Policy</a>
+        <a href="/terms" onclick="navigate(event, '/terms')">Terms and Conditions</a>
     </div>
-    <div class="container">
-        <h1>JPG to PDF Converter</h1>
-        <input type="file" id="jpgInput" accept="image/jpeg" multiple>
-        <button onclick="convertToPDF()">Convert to PDF</button>
-        <div class="info-box">
-            <h2>How to Use</h2>
-            <p>Select one or more JPG files from your device, and click "Convert to PDF". The converter will generate a PDF containing your images.</p>
-        </div>
-    </div>
+    <div id="content" class="container"></div>
 
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <script>
+        function navigate(event, path) {
+            event.preventDefault();
+            page(path);
+        }
+
+        function loadContent(content) {
+            document.getElementById('content').innerHTML = content;
+        }
+
+        // Define routes
+        page('/', () => loadContent(`
+            <h1>JPG to PDF Converter</h1>
+            <input type="file" id="jpgInput" accept="image/jpeg" multiple>
+            <button onclick="convertToPDF()">Convert to PDF</button>
+            <div class="info-box">
+                <h2>How to Use</h2>
+                <p>Select one or more JPG files from your device, and click "Convert to PDF". The converter will generate a PDF containing your images.</p>
+            </div>
+        `));
+
+        page('/how-to-use', () => loadContent(`
+            <h1>How to Use</h1>
+            <p>Select one or more JPG files from your device, and click "Convert to PDF". The converter will generate a PDF containing your images.</p>
+        `));
+
+        page('/contact-us', () => loadContent(`
+            <h1>Contact Us / About Us</h1>
+            <p>This is the Contact Us / About Us page.</p>
+        `));
+
+        page('/privacy-policy', () => loadContent(`
+            <h1>Privacy Policy</h1>
+            <p>This is the Privacy Policy page.</p>
+        `));
+
+        page('/terms', () => loadContent(`
+            <h1>Terms and Conditions</h1>
+            <p>This is the Terms and Conditions page.</p>
+        `));
+
+        // Convert to PDF function
         async function convertToPDF() {
             const fileInput = document.getElementById('jpgInput');
             if (fileInput.files.length === 0) {
@@ -175,6 +208,9 @@
             a.click();
             window.URL.revokeObjectURL(url);
         }
+
+        // Start Page.js routing
+        page();
     </script>
 </body>
 </html>
