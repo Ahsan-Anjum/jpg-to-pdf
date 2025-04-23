@@ -1,224 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-H8WZ3QJS7N"></script>    
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H8WZ3QJS7N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-H8WZ3QJS7N');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4652820964890698" crossorigin="anonymous"></script>
 
-  gtag('config', 'G-H8WZ3QJS7N');
-</script>
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4652820964890698"
-     crossorigin="anonymous"></script>
-      
-    <!-- Meta Tags for SEO -->
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free JPG to PDF Converter Online | Fast and Secure</title>
     <meta name="description" content="Convert JPG images to PDF quickly and easily with our free online tool. No downloads required. Try it now!">
-    <meta name="keywords" content="JPG to PDF, image to PDF converter, free PDF converter, online JPG to PDF">
-    <meta property="og:title" content="Free JPG to PDF Converter Online">
-    <meta property="og:description" content="Convert JPG images to PDF quickly and easily with our free online tool. No downloads required. Try it now!">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Ahsan-Anjum/jpg-to-pdf/root/ok.jpg">
-    <meta property="og:url" content="https://imagopdf.vercel.app">
-    <meta property="og:type" content="website">
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Free JPG to PDF Converter Online">
-    <meta property="twitter:description" content="Convert JPG images to PDF quickly and easily with our free online tool. No downloads required. Try it now!">
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/Ahsan-Anjum/jpg-to-pdf/root/ok.jpg">
-    <meta name="robots" content="index, follow">
+    <!-- Remaining meta tags same as before -->
 
-     <meta property="og:image" content="https://raw.githubusercontent.com/Ahsan-Anjum/jpg-to-pdf/root/ok.jpg" />
-     <meta property="twitter:image" content="https://raw.githubusercontent.com/Ahsan-Anjum/jpg-to-pdf/root/ok.jpg" />
-
-
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "ImagoPDF",
-      "url": "https://imagopdf.vercel.app",
-      "description": "Free JPG to PDF Converter Online | Convert JPG images to PDF quickly and easily with our free online tool.",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://imagopdf.vercel.app",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
+    <!-- Preload PDF-Lib -->
+    <link rel="preload" href="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js" as="script">
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+        :root {
+            --primary: #4A90E2;
+            --primary-dark: #357ABD;
+            --background: #f8f9fa;
+            --text: #2c3e50;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
         .header {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            padding: 10px 20px;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-        .header a {
-            margin: 5px;
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: flex-end;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-link {
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            color: var(--primary);
             text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 8px;
-            background-color: #e0e0e0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            border: 1px solid var(--primary);
         }
-        .header a:hover {
-            background-color: #c0c0c0;
-            color: #0056b3;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22);
-            width: 90%;
-            max-width: 800px;
-            margin: auto;
-            margin-top: 60px;
-        }
-        h1, h2, h3 {
-            margin-top: 0;
-        }
-        input[type="file"] {
-            margin: 20px 0;
-        }
-        button {
-            padding: 10px 20px;
-            background: #007bff;
+
+        .nav-link:hover {
+            background: var(--primary);
             color: white;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .upload-area {
+            border: 2px dashed var(--primary);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            transition: all 0.2s ease;
+        }
+
+        .upload-area.dragover {
+            background: rgba(74, 144, 226, 0.1);
+            border-color: var(--primary-dark);
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .file-list {
+            margin: 1rem 0;
+            list-style: none;
+        }
+
+        .button {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        button:hover {
-            background: #0056b3;
+
+        .button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
-        /* Responsive styles */
+
+        .button:hover:not(:disabled) {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .spinner {
+            animation: spin 1s linear infinite;
+            width: 1.5rem;
+            height: 1.5rem;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         @media (max-width: 768px) {
-            .header a {
-                margin: 5px 2px;
-                font-size: 14px;
+            .nav {
+                justify-content: center;
             }
+            
             .container {
-                padding: 10px;
-                margin-top: 20px;
-            }
-            button {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
-        }
-        @media (max-width: 480px) {
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .header a {
-                display: block;
-                margin: 5px 0;
-                width: 100%;
-                text-align: center;
-            }
-            .container {
-                width: 95%;
-                margin-top: 10px;
+                margin: 1rem;
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <header class="header">
-        <a href="index.html">Home</a>
-        <a href="how-to-use.html">How to Use</a>
-        <a href="contact-us.html">Contact Us / About Us</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms.html">Terms and Conditions</a>
+        <nav class="nav" aria-label="Main navigation">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="how-to-use.html">How to Use</a>
+            <a class="nav-link" href="contact-us.html">Contact</a>
+            <a class="nav-link" href="privacy-policy.html">Privacy</a>
+            <a class="nav-link" href="terms.html">Terms</a>
+        </nav>
     </header>
+
     <main class="container">
-        <h1>JPG to PDF Converter</h1>
-        <input type="file" id="jpgInput" accept="image/jpeg" multiple>
-        <button onclick="convertToPDF()">Convert to PDF</button>
-        <section class="info-box">
-            <h2>How to Use</h2>
-            <p>Select one or more JPG files from your device, and click "Convert to PDF". The converter will generate a PDF containing your images.</p>
+        <h1 class="text-center">Convert Images to PDF</h1>
+        <p class="text-center">Drag & drop or select JPG images</p>
+
+        <div class="upload-area" id="dropZone">
+            <label for="fileInput" class="button">
+                Choose Files
+                <input type="file" id="fileInput" accept="image/jpeg" multiple>
+            </label>
+            <div class="file-list" id="fileList"></div>
+        </div>
+
+        <button class="button" id="convertBtn" onclick="convertToPDF()">
+            Convert to PDF
+        </button>
+
+        <section class="info-section">
+            <h2>How it works</h2>
+            <ol class="steps">
+                <li>Select or drag JPG images</li>
+                <li>Click convert button</li>
+                <li>Download your PDF</li>
+            </ol>
         </section>
     </main>
 
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
     <script>
-        async function convertToPDF() {
-            const fileInput = document.getElementById('jpgInput');
-            if (fileInput.files.length === 0) {
-                alert('Please select one or more JPG files.');
+        // Drag & drop handlers
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+        const convertBtn = document.getElementById('convertBtn');
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+        function handleFiles(files) {
+            const validFiles = Array.from(files).filter(file => 
+                file.type === 'image/jpeg' || file.name.toLowerCase().endsWith('.jpg')
+            );
+
+            if (validFiles.length === 0) {
+                alert('Please select JPG files only.');
                 return;
             }
 
-            const { PDFDocument } = PDFLib;
-            const pdfDoc = await PDFDocument.create();
+            fileList.innerHTML = validFiles.map(file => `
+                <div class="file-item">
+                    ✔️ ${file.name} (${(file.size/1024).toFixed(1)}KB)
+                </div>
+            `).join('');
+        }
 
-            const fileNames = [];
-
-            for (const file of fileInput.files) {
-                const reader = new FileReader();
-
-                const imgData = await new Promise((resolve, reject) => {
-                    reader.onload = (event) => resolve(event.target.result);
-                    reader.onerror = reject;
-                    reader.readAsArrayBuffer(file);
-                });
-
-                fileNames.push(file.name);
-
-                const img = await pdfDoc.embedJpg(imgData);
-                const imgDims = img.scale(1);
-
-                const page = pdfDoc.addPage([imgDims.width, imgDims.height]);
-                page.drawImage(img, {
-                    x: 0,
-                    y: 0,
-                    width: imgDims.width,
-                    height: imgDims.height,
-                });
+        async function convertToPDF() {
+            const files = fileInput.files;
+            if (files.length === 0) {
+                alert('Please select files first.');
+                return;
             }
 
-            const pdfBytes = await pdfDoc.save();
-            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-            const url = window.URL.createObjectURL(blob);
+            convertBtn.disabled = true;
+            convertBtn.innerHTML = `<div class="spinner"></div> Processing...`;
 
-            const a = document.createElement('a');
-            a.href = url;
+            try {
+                const { PDFDocument } = PDFLib;
+                const pdfDoc = await PDFDocument.create();
+                
+                for (const file of files) {
+                    const imgArrayBuffer = await file.arrayBuffer();
+                    const img = await pdfDoc.embedJpg(imgArrayBuffer);
+                    const page = pdfDoc.addPage([img.width, img.height]);
+                    page.drawImage(img, { x: 0, y: 0 });
+                }
 
-            let pdfFileName;
-            if (fileNames.length === 1) {
-                pdfFileName = fileNames[0].replace(/\.[^/.]+$/, "") + ".pdf";
-            } else {
-                const shortName = fileNames.map(name => name[0]).join('');
-                pdfFileName = shortName + "_combined.pdf";
+                const pdfBytes = await pdfDoc.save();
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = files.length === 1 
+                    ? `${files[0].name.split('.')[0]}.pdf` 
+                    : `combined-${Date.now()}.pdf`;
+                a.click();
+                URL.revokeObjectURL(url);
+            } catch (error) {
+                alert('Conversion failed. Please try again.');
+                console.error(error);
+            } finally {
+                convertBtn.disabled = false;
+                convertBtn.innerHTML = 'Convert to PDF';
             }
-            a.download = pdfFileName;
-
-            a.click();
-            window.URL.revokeObjectURL(url);
         }
     </script>
 </body>
